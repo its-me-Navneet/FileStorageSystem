@@ -10,13 +10,14 @@ const ConfirmForm=require('./models/ConfirmForm');
 
 const jwt=require('jsonwebtoken');
 const checkAuth=require('./checkAuth')
-const db = "mongodb+srv://napan:1234@cluster0.1iy39cq.mongodb.net/?retryWrites=true&w=majority";
+const db = "mongodb+srv://navneet:navneet123@cluster0.srpvfu9.mongodb.net/?retryWrites=true&w=majority";
 app.post("/",(req,res)=>{
     const {email,password}=req.body;
-    console.log(password);
+    // console.log(password);
     user.find({ email: email})
-        .then((exist) => {
-            const pass=exist[0].password;
+        .then((exist) => { 
+            //  console.log(exist)
+            const pass=exist[0].password 
             bcrypt.compare(password, pass).then(function(result) {
                 if(result){
                     const accesstoken=jwt.sign({
